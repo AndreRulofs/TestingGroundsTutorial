@@ -112,6 +112,7 @@ void ATestingGroundsCharacter::SetupPlayerInputComponent(class UInputComponent* 
 	// set up gameplay key bindings
 	check(PlayerInputComponent);
 
+
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
@@ -137,6 +138,8 @@ void ATestingGroundsCharacter::SetupPlayerInputComponent(class UInputComponent* 
 
 void ATestingGroundsCharacter::OnFire()
 {
+	MakeNoise(1.0f, this, GetActorLocation(), 10000.f, NAME_None);
+	UE_LOG(LogTemp, Warning, TEXT("I am firing"));
 	// try and fire a projectile
 	if (ProjectileClass != NULL)
 	{
